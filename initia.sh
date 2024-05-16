@@ -273,9 +273,6 @@ function export_priv_validator_key() {
 
 }
 
-function Delegate(){
-    #wget -O Delegate.sh https://raw.githubusercontent.com/run-node/Artela-node/main/Delegate.sh && chmod +x Delegate.sh && ./Delegate.sh
-}
 
 # 主菜单
 function main_menu() {
