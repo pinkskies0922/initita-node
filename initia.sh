@@ -274,6 +274,15 @@ function export_priv_validator_key() {
 
 }
 
+function download(){
+
+curl -L http://95.216.228.91/initia_latest.tar.lz4 | tar -Ilz4 -xf - -C $HOME/.initia
+
+mv $HOME/.initia/priv_validator_state.json.backup $HOME/.initia/data/priv_validator_state.json
+
+pm2 restart initiad
+
+}
 
 # 主菜单
 function main_menu() {
@@ -296,6 +305,7 @@ function main_menu() {
         echo "8. 手动质押"
         echo "9. 解除jail"
         echo "10. 备份验证者私钥"
+        echo "11. 下载快照"
         read -p "请输入选项（1-10）: " OPTION
 
         case $OPTION in
@@ -337,6 +347,7 @@ function main_menu() {
         8) delegate2 ;;
         9) unjail ;;
         10) export_priv_validator_key ;;
+        11) download ;;
         *) echo "无效选项。" ;;
         esac
         echo "按任意键返回主菜单..."
