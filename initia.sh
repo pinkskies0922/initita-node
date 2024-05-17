@@ -284,6 +284,12 @@ pm2 restart initiad
 
 }
 
+function update(){
+
+wget http://95.216.228.91/initia-addrbook.json -O $HOME/.initia/config/addrbook.json && pm2 restart initiad
+
+}
+
 # 主菜单
 function main_menu() {
     while true; do
@@ -305,7 +311,8 @@ function main_menu() {
         echo "8. 手动质押"
         echo "9. 解除jail"
         echo "10. 备份验证者私钥"
-        echo "11. 下载快照"
+        echo "11. 更新快照"
+        echo "12. 更新addrbook"
         read -p "请输入选项（1-10）: " OPTION
 
         case $OPTION in
@@ -348,6 +355,7 @@ function main_menu() {
         9) unjail ;;
         10) export_priv_validator_key ;;
         11) download ;;
+        12) update ;;
         *) echo "无效选项。" ;;
         esac
         echo "按任意键返回主菜单..."
